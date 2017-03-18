@@ -1,0 +1,59 @@
+/**
+ * 電卓ボックス用スタイルシート
+ */
+ @calc-box-width:  375px;
+ @calc-box-height: 667px;
+
+.calc-box {
+    display: inline-block;
+
+    width : 100%;
+    height: 100%;
+    max-width : @calc-box-width;
+    max-height: @calc-box-height;
+
+    border: 1px solid red;
+
+    /* 視点距離 */
+    perspective: 5000;
+
+    .calc-box-cover {
+        position: relative;
+
+        width:  100%;
+        height: 100%;
+
+        border: 1px solid red;
+
+        /* オブジェクトを立体的に変形 */
+        transform-style: preserve-3d;
+        /* オブジェクト左端を中心に変形 */
+        transform-origin: left center;
+        /* 変形に要する時間 */
+        transition: transform 1s;
+
+        .calc-box-cover-front,
+        .calc-box-cover-back {
+            position: absolute;
+            width:  inherit;
+            height: inherit;
+            background-position: center;
+            /* オブジェクトの裏面を見せない */
+            backface-visibility: hidden;
+        }
+        .calc-box-cover-front {
+            background-image: url('../img/cover-front.png');
+        }
+        .calc-box-cover-back {
+            background-image: url('../img/cover-back.jpg');
+            /* 裏面は初期状態でひっくり返しておく */
+            transform: rotateY(180deg);
+        }
+    }
+    /*  箱を開ける */
+    &.calc-box-open {
+       .calc-box-cover {
+            transform: rotateY(-180deg);
+        }
+    }
+}
