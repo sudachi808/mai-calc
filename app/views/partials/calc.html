@@ -1,32 +1,32 @@
 <div class="calc">
     <div class="well">123</div>
     <div>
-        <div class="btn btn-default btn-other">Ｃ</div>
-        <div class="btn btn-default btn-other">±</div>
-        <div class="btn btn-default btn-other">％</div>
-        <div class="btn btn-default btn-operator">÷</div>
+        <div class="btn btn-default btn-other"    role="clear"    ng-click="CalcBox.clickBtn($event,  0)">Ｃ</div>
+        <div class="btn btn-default btn-other"    role="invert"   ng-click="CalcBox.clickBtn($event,  1)">±</div>
+        <div class="btn btn-default btn-other"    role="percent"  ng-click="CalcBox.clickBtn($event,  2)">％</div>
+        <div class="btn btn-default btn-operator" role="divide"   ng-click="CalcBox.clickBtn($event,  3)">÷</div>
     </div>
     <div>
-        <div class="btn btn-default">７</div>
-        <div class="btn btn-default">８</div>
-        <div class="btn btn-default">９</div>
-        <div class="btn btn-default btn-operator">×</div>
+        <div class="btn btn-default"              role="7"        ng-click="CalcBox.clickBtn($event,  4)">７</div>
+        <div class="btn btn-default"              role="8"        ng-click="CalcBox.clickBtn($event,  5)">８</div>
+        <div class="btn btn-default"              role="9"        ng-click="CalcBox.clickBtn($event,  6)">９</div>
+        <div class="btn btn-default btn-operator" role="nmltiple" ng-click="CalcBox.clickBtn($event,  7)">×</div>
     </div>
     <div>
-        <div class="btn btn-default">４</div>
-        <div class="btn btn-default">５</div>
-        <div class="btn btn-default">６</div>
-        <div class="btn btn-default btn-operator">－</div>
+        <div class="btn btn-default"              role="4"        ng-click="CalcBox.clickBtn($event,  8)">４</div>
+        <div class="btn btn-default"              role="5"        ng-click="CalcBox.clickBtn($event,  9)">５</div>
+        <div class="btn btn-default"              role="6"        ng-click="CalcBox.clickBtn($event, 10)">６</div>
+        <div class="btn btn-default btn-operator" role="minus"    ng-click="CalcBox.clickBtn($event, 11)">－</div>
     </div>
     <div>
-        <div class="btn btn-default">１</div>
-        <div class="btn btn-default">２</div>
-        <div class="btn btn-default">３</div>
-        <div class="btn btn-default btn-operator">＋</div>
+        <div class="btn btn-default"              role="1"        ng-click="CalcBox.clickBtn($event, 12)">１</div>
+        <div class="btn btn-default"              role="2"        ng-click="CalcBox.clickBtn($event, 13)">２</div>
+        <div class="btn btn-default"              role="3"        ng-click="CalcBox.clickBtn($event, 14)">３</div>
+        <div class="btn btn-default btn-operator" role="plus"     ng-click="CalcBox.clickBtn($event, 15)">＋</div>
     </div>
     <div>
-        <div class="btn btn-default btn-x2">０</div>
-        <div class="btn btn-default">．</div>
-        <div class="btn btn-default btn-operator">＝</div>
+        <div class="btn btn-default btn-x2"       role="0"        ng-click="CalcBox.clickBtn($event, 16)">０</div>
+        <div class="btn btn-default"              role="point"    ng-click="CalcBox.clickBtn($event, 18)">．</div>
+        <div class="btn btn-default btn-operator" role="execute"  ng-click="CalcBox.clickBtn($event, 19)">＝</div>
     </div>
 </div>

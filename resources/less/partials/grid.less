@@ -1,0 +1,17 @@
+/**
+ * シウマイ貼り付けグリッド用スタイルシート
+ */
+.grid {
+    width: 100%;
+    margin-top: 115px;
+    .grid-row {
+        padding: 0px;
+        > div[ng-include] {
+            display: inline-block;
+        }
+    }
+    .shaomai {
+        transform: translateZ(-50px);
+        margin: 0px 2px;
+    }
+}
