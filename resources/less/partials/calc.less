@@ -1,0 +1,41 @@
+/**
+ * 電卓用スタイルシート
+ */
+@calc-btn-width:  80px;
+@calc-btn-height: 75px;
+
+@calc-btn-operator-bg: #3868AA;
+@calc-btn-operator-fg: #FFFFFF;
+
+@calc-btn-other-bg: #DDDDDD;
+@calc-btn-other-fg: #000000;
+
+.calc {
+    padding: 10px;
+    .well {
+        font-size: 28pt;
+        font-family: monospace;
+        text-align: right;
+        padding: 5px 10px;
+        background-color: #EFECE5;
+        border: 1px solid silver;
+    }
+    .btn {
+        font-size: 18pt;
+        width : @calc-btn-width;
+        height: @calc-btn-height;
+        line-height: @calc-btn-height;
+        margin: 1px 0px;
+        &.btn-x2 {
+            width: @calc-btn-width * 2 + 5;
+        }
+        &.btn-operator {
+            background-color: @calc-btn-operator-bg;
+            color: @calc-btn-operator-fg;
+        }
+        &.btn-other {
+            background-color: @calc-btn-other-bg;
+            color: @calc-btn-other-fg;
+        }
+    }
+}

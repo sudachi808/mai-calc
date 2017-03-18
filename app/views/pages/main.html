@@ -1,7 +1,8 @@
 <div class="calc-box" ng-controller="CalcBoxController as CalcBox">
-    <div class="calc-box-cover" ng-click="CalcBox.toggleOpen()">
+    <div class="calc-box-cover">
         <div class="calc-box-cover-front">
             <div>オモテ</div>
+            <div ng-include="'views/partials/calc.html'"></div>
         </div>
         <div class="calc-box-cover-back">
             <div>ウラ</div>
