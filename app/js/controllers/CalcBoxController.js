@@ -6,7 +6,11 @@ angular.module('app', ['service', 'psForceTouchEvents'])
 
     var self = this;
 
-    self.items = [];
+    self.ALL_SHAOMAI_COUNT = 20;
+
+    self.uppers = [];   // フタ
+    self.lowers = [];   // 箱
+
     self.calc  = CalcService;
 
     /**
@@ -26,7 +30,31 @@ angular.module('app', ['service', 'psForceTouchEvents'])
     };
 
     /**
-     * TODO: シウマイを剥がす
+     * シウマイをフタに貼り付ける
+     * @param {number}  シウマイ位置
+     * @param {boolean} グリンピース
+     * @param {boolean} 本体
+     * @return {void}
+     */
+    self.moveToUpper = function(index, green, body) {
+        self.uppers[index] = { 'green':  green, 'body':  body };
+        self.lowers[index] = { 'green': !green, 'body': !body };
+    };
+
+    /**
+     * シウマイを剥がす
+     * @param {number}  シウマイ位置
+     * @param {boolean} グリンピース
+     * @param {boolean} 本体
+     * @return {void}
+     */
+    self.moveToLower = function(index, green, body) {
+        self.uppers[index] = { 'green': !green, 'body': !body };
+        self.lowers[index] = { 'green':  green, 'body':  body };
+    };
+
+    /**
+     * TODO: シウマイを箱に戻す
      */
 
     /**
@@ -47,7 +75,6 @@ angular.module('app', ['service', 'psForceTouchEvents'])
 
         var btn = angular.element(event.currentTarget);
 
-        var index = btn.attr('index');
         var role  = btn.attr('role');
         var value = btn.attr('value');
         var text  = btn.text();
@@ -71,6 +98,7 @@ angular.module('app', ['service', 'psForceTouchEvents'])
             default:
                 return;
         }
+
     };
 
     /**
@@ -211,12 +239,21 @@ angular.module('app', ['service', 'psForceTouchEvents'])
      * @return {void}
      */
     self.onForceTouch = function(event, force, index) {
-        if (force === 1) {
-            console.log('STICK!', index, force);
-            // シウマイ貼り付け
-            self.items[index].sticked = true;
+        var upper = self.uppers[index];
+        if (force > 0.9) {
+            if (!upper.body) {
+                // シウマイ貼り付け
+                console.log(index, 'Stick GREEN & BODY');
+                self.moveToUpper(index, true, true);
+            }
         }
-        // TODO: グリンピース貼り付け
+        if (force > 0.5) {
+            if (!upper.green && !upper.body) {
+                // グリンピース貼り付け
+                console.log(index, 'Stick GREEN');
+                self.moveToUpper(index, true, false);
+            }
+        }
     };
 
     /**
@@ -224,8 +261,9 @@ angular.module('app', ['service', 'psForceTouchEvents'])
      */
     (function(){
         self._init();
-        for (var i = 0 ; i < 4 * 5 ; i++) {
-            self.items.push({ sticked : false });
+        for (var i = 0 ; i < self.ALL_SHAOMAI_COUNT ; i++) {
+            self.uppers.push({ 'green': false ,'body': false });
+            self.lowers.push({ 'green': true  ,'body': true  });
         }
     })();
 }]);

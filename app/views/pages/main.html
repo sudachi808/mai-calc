@@ -11,7 +11,7 @@
         <!-- シウマイ貼り付け面 -->
         <div class="grid">
             <div class="grid-row" ng-repeat="row in [0, 1, 2, 3, 4]">
-                <div class="{{ item.sticked ? 'visible' : 'invisible' }}" ng-include="'views/partials/shaomai.html'" ng-repeat="item in CalcBox.items | limitTo: 4 : 4 * row">{{ item.sticked }}</div>
+                <div class="{{ (shaomai.green || shaomai.body) ? 'visible' : 'invisible' }}" ng-include="'views/partials/shaomai.html'" ng-repeat="shaomai in CalcBox.uppers | limitTo: 4 : 4 * row"></div>
             </div>
         </div>
     </div>
@@ -25,7 +25,7 @@
         <!-- シウマイ貼り付け面 -->
         <div class="grid">
             <div class="grid-row" ng-repeat="row in [0, 1, 2, 3, 4]">
-                <div class="{{ item.sticked ? 'invisible' : 'visible' }}" ng-include="'views/partials/shaomai.html'" ng-repeat="item in CalcBox.items | limitTo: 4 : 4 * row"></div>
+                <div class="{{ (shaomai.green || shaomai.body) ? 'visible' : 'invisible' }}" ng-include="'views/partials/shaomai.html'" ng-repeat="shaomai in CalcBox.lowers | limitTo: 4 : 4 * row"></div>
             </div>
         </div>
         <div class="btn btn-lg btn-default" ng-click="CalcBox.toggleOpen()">OPEN/CLOSE</div>
