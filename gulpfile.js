@@ -9,4 +9,9 @@ gulp.task('less', function() {
     .pipe(gulp.dest('app/css/'));
 });
 
-gulp.task('default', ['less']);
+gulp.task('copy', function() {
+    gulp.src('node_modules/pressure/dist/pressure.*').pipe(gulp.dest('app/js/vendors/pressure/'));
+    gulp.src('node_modules/angular-pressure/angular.pressure.*').pipe(gulp.dest('app/js/vendors/angular-pressure/'));
+})
+
+gulp.task('default', ['less', 'copy']);

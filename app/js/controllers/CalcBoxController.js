@@ -1,7 +1,7 @@
 /**
  * 電卓箱コントローラ
  */
-angular.module('app', ['service'])
+angular.module('app', ['service', 'psForceTouchEvents'])
 .controller('CalcBoxController', ['$element', 'CalcService', function($element, CalcService) {
 
     var self = this;
@@ -39,14 +39,15 @@ angular.module('app', ['service'])
 
     /**
      * 電卓の各ボタンクリックハンドラ
-     * @param  {$event} イベントオブジェクト
+     * @param  {$event}
      * @param  {number} ボタン位置
      * @return {void}
      */
-    self.clickBtn = function(event, index) {
+    self.onClick = function(event, index) {
 
         var btn = angular.element(event.currentTarget);
 
+        var index = btn.attr('index');
         var role  = btn.attr('role');
         var value = btn.attr('value');
         var text  = btn.text();
@@ -70,9 +71,6 @@ angular.module('app', ['service'])
             default:
                 return;
         }
-
-        // シウマイ貼り付け
-        self.items[index].sticked = true;
     };
 
     /**
@@ -184,6 +182,32 @@ angular.module('app', ['service'])
      */
     self._onClear = function() {
         self._init();
+    };
+
+    /**
+     * 感圧タッチ開始
+     * @param {$event}
+     * @param {index}  ボタン位置
+     * @return {void}
+     */
+    self.onForceTouchStart = function(event, index) {
+        self.onClick(event, index);
+    };
+
+    /**
+     * 感圧タッチ圧力変更
+     * @param {$event}
+     * @param {number} タッチ圧力
+     * @param {index}  ボタン位置
+     * @return {void}
+     */
+    self.onForceTouch = function(event, force, index) {
+        if (force === 1) {
+            console.log('STICK!', index, force);
+            // シウマイ貼り付け
+            self.items[index].sticked = true;
+        }
+        // TODO: グリンピース貼り付け
     };
 
     /**
