@@ -64,17 +64,49 @@
      * 底面
      */
     .calc-box-bottom {
+        background-image: url('../img/cover-back.jpg');
+
         position: absolute;
 
         z-index: 100;
 
         perspective: 2000px;
-        transform: translateZ(-40px);
-        border: 1px solid red;
+        transform: translateZ(-80px);
+        border: 1px solid gray;
 
         width : 100%;
         height: 100%;
 
         top: 0px;
+    }
+    .calc-box-side {
+        background-image: url('../img/cover-back.jpg');
+
+        position: absolute;
+
+        border: 1px solid gray;
+
+        transform-style: preserve-3d;
+
+        &.calc-box-front,
+        &.calc-box-back {
+            width: 100%;
+            height: 80px;
+            transform-origin: top;
+            transform: rotateX(-90deg);
+        }
+        &.calc-box-front { }
+        &.calc-box-back {
+            top: 0px;
+        }
+
+        &.calc-box-left,
+        &.calc-box-right {
+            top: 0px;
+            width: 80px;
+            height: 100%;
+        }
+        &.calc-box-left  { left : 0px; transform-origin: left;  transform: rotateY( 90deg); }
+        &.calc-box-right { right: 0px; transform-origin: right; transform: rotateY(-90deg); }
     }
 }
