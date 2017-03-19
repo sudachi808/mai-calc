@@ -113,6 +113,14 @@ angular.module('app', ['service', 'psForceTouchEvents'])
             //
             self._onExecute();
             self.value_1 = self.answer;
+        } else {
+            if (self.answer !== null && self.value_1 === null) {
+                //
+                // 計算の実行直後に、演算子を選択した場合、
+                // value_1 に直前の計算結果をセットする。
+                //
+                self.value_1 = self.answer;
+            }
         }
         self.operator = value;
         self.monitor.operator = text;
