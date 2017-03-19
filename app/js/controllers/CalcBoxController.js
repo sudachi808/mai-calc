@@ -6,6 +6,12 @@ angular.module('app', ['service', 'psForceTouchEvents'])
 
     var self = this;
 
+    /**
+     * 最大表示桁数
+     * @const {number}
+     */
+    self.MAX_DIGITS = 10;
+
     self.ALL_SHAOMAI_COUNT = 20;
 
     self.uppers = [];   // フタ
@@ -110,11 +116,17 @@ angular.module('app', ['service', 'psForceTouchEvents'])
             if (self.value_1 === null) {
                 self.value_1 = '';
             }
+            if (self.value_1.length >= self.MAX_DIGITS) {
+                return;
+            }
             self.value_1 += value;
             self.monitor.value = self.value_1;
         } else {
             if (self.value_2 === null) {
                 self.value_2 = '';
+            }
+            if (self.value_2.length >= self.MAX_DIGITS) {
+                return;
             }
             self.value_2 += value;
             self.monitor.value = self.value_2;
