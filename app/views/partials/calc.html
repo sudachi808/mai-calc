@@ -1,7 +1,16 @@
 <div class="calc">
     <div class="well calc-monitor">
-        <div class="label label-default pull-left">{{ CalcBox.monitor.operator }}</div>
-        {{ CalcBox.monitor.value }}
+        <div ng-if="CalcBox.error">
+            <div class="label label-danger pull-left small">ERROR</div>
+            <div class="calc-error-msg">{{
+                 (CalcBox.error === 'ZeroDivideException') ? '0除算です' :
+                 (CalcBox.error);
+            }}</div>
+        </div>
+        <div ng-if="!(CalcBox.error)">
+            <div class="label label-default pull-left">{{ CalcBox.monitor.operator }}</div>
+            {{ CalcBox.monitor.value }}
+        </div>
     </div>
     <div>
         <div class="btn btn-default btn-other"    role="clear"              ps-force-touch-start="CalcBox.onForceTouchStart($event,  0)" ps-force-touch="CalcBox.onForceTouch($event, force,  0)">Ｃ</div>

@@ -171,6 +171,7 @@ angular.module('app', ['service', 'psForceTouchEvents'])
             self.monitor.value = answer;
             self.answer = answer;
         } catch(e) {
+            self._init();
             self.error = e;
             console.log(e);
         }
