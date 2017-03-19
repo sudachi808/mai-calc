@@ -108,6 +108,14 @@ angular.module('app', ['service'])
      * @return {void}
      */
     self._onOperator = function(value, text) {
+        if (self.value_2 !== null) {
+            //
+            // すでに value_2 が入力されている状態で、演算子が選択された場合、
+            // いったん計算を実行して、結果を value_1 にセットする。
+            //
+            self._onExecute();
+            self.value_1 = self.answer;
+        }
         self.operator = value;
         self.monitor.operator = text;
     };
@@ -163,6 +171,7 @@ angular.module('app', ['service'])
             }
             self._init();
             self.monitor.value = answer;
+            self.answer = answer;
         } catch(e) {
             self.error = e;
             console.log(e);
