@@ -163,7 +163,6 @@ angular.module('app', ['service'])
             }
             self._init();
             self.monitor.value = answer;
-            self.value_1 = answer;
         } catch(e) {
             self.error = e;
             console.log(e);
