@@ -126,7 +126,7 @@ angular.module('app', ['service', 'psForceTouchEvents'])
      * @return {void}
      */
     self._onPoint = function() {
-
+        self._onNumber('.');
     };
 
     /**
