@@ -112,24 +112,41 @@ angular.module('app', ['service', 'psForceTouchEvents'])
      * @return {void}
      */
     self._onNumber = function(value) {
+
+        //
+        // 小数点が存在するかどうか
+        //
+        var hasPoint = function(str) {
+            var count = 0;
+            var pos = str.indexOf('.');
+            while (pos !== -1) {
+                count++;
+                pos = str.indexOf('.', pos + 1);
+            }
+            return (count > 0);
+        };
+
+        //
+        // バッファーに値をセット
+        //
+        var setValue = function(buffer, value) {
+            if (buffer === null) {
+                buffer = '';
+            }
+            if (buffer.length >= self.MAX_DIGITS) {
+                return buffer;
+            }
+            if (value === '.' && hasPoint(buffer)) {
+                return buffer;
+            }
+            buffer += value;
+            return buffer;
+        };
+
         if (self.operator === null) {
-            if (self.value_1 === null) {
-                self.value_1 = '';
-            }
-            if (self.value_1.length >= self.MAX_DIGITS) {
-                return;
-            }
-            self.value_1 += value;
-            self.monitor.value = self.value_1;
+            self.monitor.value = self.value_1 = setValue(self.value_1, value);
         } else {
-            if (self.value_2 === null) {
-                self.value_2 = '';
-            }
-            if (self.value_2.length >= self.MAX_DIGITS) {
-                return;
-            }
-            self.value_2 += value;
-            self.monitor.value = self.value_2;
+            self.monitor.value = self.value_2 = setValue(self.value_2, value);
         }
     };
 
