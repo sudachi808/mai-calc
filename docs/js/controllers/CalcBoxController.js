@@ -61,8 +61,14 @@ angular.module('app', ['service', 'ngTouch', 'psForceTouchEvents'])
     };
 
     /**
-     * TODO: シウマイを箱に戻す
+     * すべてのシウマイを箱に戻す（グリンピースも）
+     * @return {void}
      */
+    self.moveToLowerAll = function() {
+        for (var i = 0 ; i < self.ALL_SHAOMAI_COUNT ; i++) {
+            self.moveToLower(i, true, true);
+        }
+    }
 
     /**
      * 箱のフタを開閉
@@ -77,6 +83,7 @@ angular.module('app', ['service', 'ngTouch', 'psForceTouchEvents'])
             grid_lower.removeClass('hidden');
         } else {
             setTimeout(function() {
+                self.moveToLowerAll();
                 grid_upper.addClass('hidden');
                 grid_lower.addClass('hidden');
             }, 1000);
