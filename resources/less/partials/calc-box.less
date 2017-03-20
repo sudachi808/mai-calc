@@ -15,7 +15,7 @@
         width: @display-width-iphone5;
     }
 
-    border: 1px solid red;
+    border: 1px solid silver;
 
     /* 視点距離 */
     perspective: 2000px;
@@ -35,12 +35,18 @@
             width: @display-width-iphone5;
         }
 
-        border: 1px solid red;
+        border: 1px solid silver;
 
         /* オブジェクトを立体的に変形 */
         transform-style: preserve-3d;
-        /* オブジェクト左端を中心に変形 */
-        transform-origin: left center;
+        /* オブジェクト変形軸の位置 */
+        transform-origin: left;
+        @media screen and (min-device-width: @display-width-iphone5) and (max-device-width: @display-width-iphone5) {
+            transform-origin: center;
+        }
+        @media screen and (min-device-width: @display-width-iphone6) and (max-device-width: @display-width-iphone6) {
+            transform-origin: center;
+        }
         /* 変形に要する時間 */
         transition: transform 1s;
 
