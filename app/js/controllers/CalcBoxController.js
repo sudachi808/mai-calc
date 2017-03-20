@@ -106,6 +106,9 @@ angular.module('app', ['service', 'ngTouch', 'psForceTouchEvents'])
             case 'point':
                 self._onPoint();
                 break;
+            case 'invert':
+                self._onInvert();
+                break;
             case 'execute':
                 self._onExecute();
                 break;
@@ -195,11 +198,35 @@ angular.module('app', ['service', 'ngTouch', 'psForceTouchEvents'])
     };
 
     /**
+     * 正負を反転
+     * @return {void}
+     */
+    self._onInvert = function() {
+        if (self.operator === null) {
+            if (self.value_1 === null) {
+                return;
+            }
+            self.monitor.value = self.value_1 = '-' + self.value_1;
+        } else {
+            if (self.value_2 === null) {
+                return;
+            }
+            self.monitor.value = self.value_2 = '-' + self.value_2;
+        }
+    };
+
+    /**
      * 計算実行
      * @return {void}
      */
     self._onExecute = function() {
         try {
+            if (self.operator === null) {
+                //
+                // 演算子が未選択の場合はなにもしない。
+                //
+                return;
+            }
             if (self.value_1 === null && self.value_2 === null) {
                 //
                 // value_1、value_2 ともに未入力の場合はなにもしない。
@@ -238,7 +265,9 @@ angular.module('app', ['service', 'ngTouch', 'psForceTouchEvents'])
                 case '-':
                 case '*':
                 case '/':
+                    console.log(self.value_1 + ' ' + self.operator + ' ' + self.value_2);
                     answer = self.calc.execute(self.value_1, self.value_2, self.operator);
+                    console.log('Ans: ' + answer);
                     break;
                 default:
                     throw 'UnknownOperatorException';
