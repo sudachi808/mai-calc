@@ -13,32 +13,32 @@
         </div>
     </div>
     <div>
-        <div class="btn btn-default btn-other"    role="clear"              ps-force-touch-start="CalcBox.onForceTouchStart($event,  0)" ps-force-touch="CalcBox.onForceTouch($event, force,  0)">Ｃ</div>
-        <div class="btn btn-default btn-other"    role="invert"             ps-force-touch-start="CalcBox.onForceTouchStart($event,  1)" ps-force-touch="CalcBox.onForceTouch($event, force,  1)">±</div>
-        <div class="btn btn-default btn-other"    role="percent"            ps-force-touch-start="CalcBox.onForceTouchStart($event,  2)" ps-force-touch="CalcBox.onForceTouch($event, force,  2)">％</div>
-        <div class="btn btn-default btn-operator" role="operator" value="/" ps-force-touch-start="CalcBox.onForceTouchStart($event,  3)" ps-force-touch="CalcBox.onForceTouch($event, force,  3)">÷</div>
+        <div class="btn btn-default btn-other"    role="clear"              ng-click="CalcBox.onClick($event,  0)" ps-force-touch="CalcBox.onForceTouch($event, force,  0)">Ｃ</div>
+        <div class="btn btn-default btn-other"    role="invert"             ng-click="CalcBox.onClick($event,  1)" ps-force-touch="CalcBox.onForceTouch($event, force,  1)">±</div>
+        <div class="btn btn-default btn-other"    role="percent"            ng-click="CalcBox.onClick($event,  2)" ps-force-touch="CalcBox.onForceTouch($event, force,  2)">％</div>
+        <div class="btn btn-default btn-operator" role="operator" value="/" ng-click="CalcBox.onClick($event,  3)" ps-force-touch="CalcBox.onForceTouch($event, force,  3)">÷</div>
     </div>
     <div>
-        <div class="btn btn-default"              role="number"   value="7" ps-force-touch-start="CalcBox.onForceTouchStart($event,  4)" ps-force-touch="CalcBox.onForceTouch($event, force,  4)">７</div>
-        <div class="btn btn-default"              role="number"   value="8" ps-force-touch-start="CalcBox.onForceTouchStart($event,  5)" ps-force-touch="CalcBox.onForceTouch($event, force,  5)">８</div>
-        <div class="btn btn-default"              role="number"   value="9" ps-force-touch-start="CalcBox.onForceTouchStart($event,  6)" ps-force-touch="CalcBox.onForceTouch($event, force,  6)">９</div>
-        <div class="btn btn-default btn-operator" role="operator" value="*" ps-force-touch-start="CalcBox.onForceTouchStart($event,  7)" ps-force-touch="CalcBox.onForceTouch($event, force,  7)">×</div>
+        <div class="btn btn-default"              role="number"   value="7" ng-click="CalcBox.onClick($event,  4)" ps-force-touch="CalcBox.onForceTouch($event, force,  4)">７</div>
+        <div class="btn btn-default"              role="number"   value="8" ng-click="CalcBox.onClick($event,  5)" ps-force-touch="CalcBox.onForceTouch($event, force,  5)">８</div>
+        <div class="btn btn-default"              role="number"   value="9" ng-click="CalcBox.onClick($event,  6)" ps-force-touch="CalcBox.onForceTouch($event, force,  6)">９</div>
+        <div class="btn btn-default btn-operator" role="operator" value="*" ng-click="CalcBox.onClick($event,  7)" ps-force-touch="CalcBox.onForceTouch($event, force,  7)">×</div>
     </div>
     <div>
-        <div class="btn btn-default"              role="number"   value="4" ps-force-touch-start="CalcBox.onForceTouchStart($event,  8)" ps-force-touch="CalcBox.onForceTouch($event, force,  8)">４</div>
-        <div class="btn btn-default"              role="number"   value="5" ps-force-touch-start="CalcBox.onForceTouchStart($event,  9)" ps-force-touch="CalcBox.onForceTouch($event, force,  9)">５</div>
-        <div class="btn btn-default"              role="number"   value="6" ps-force-touch-start="CalcBox.onForceTouchStart($event, 10)" ps-force-touch="CalcBox.onForceTouch($event, force, 10)">６</div>
-        <div class="btn btn-default btn-operator" role="operator" value="-" ps-force-touch-start="CalcBox.onForceTouchStart($event, 11)" ps-force-touch="CalcBox.onForceTouch($event, force, 11)">－</div>
+        <div class="btn btn-default"              role="number"   value="4" ng-click="CalcBox.onClick($event,  8)" ps-force-touch="CalcBox.onForceTouch($event, force,  8)">４</div>
+        <div class="btn btn-default"              role="number"   value="5" ng-click="CalcBox.onClick($event,  9)" ps-force-touch="CalcBox.onForceTouch($event, force,  9)">５</div>
+        <div class="btn btn-default"              role="number"   value="6" ng-click="CalcBox.onClick($event, 10)" ps-force-touch="CalcBox.onForceTouch($event, force, 10)">６</div>
+        <div class="btn btn-default btn-operator" role="operator" value="-" ng-click="CalcBox.onClick($event, 11)" ps-force-touch="CalcBox.onForceTouch($event, force, 11)">－</div>
     </div>
     <div>
-        <div class="btn btn-default"              role="number"   value="1" ps-force-touch-start="CalcBox.onForceTouchStart($event, 12)" ps-force-touch="CalcBox.onForceTouch($event, force, 12)">１</div>
-        <div class="btn btn-default"              role="number"   value="2" ps-force-touch-start="CalcBox.onForceTouchStart($event, 13)" ps-force-touch="CalcBox.onForceTouch($event, force, 13)">２</div>
-        <div class="btn btn-default"              role="number"   value="3" ps-force-touch-start="CalcBox.onForceTouchStart($event, 14)" ps-force-touch="CalcBox.onForceTouch($event, force, 14)">３</div>
-        <div class="btn btn-default btn-operator" role="operator" value="+" ps-force-touch-start="CalcBox.onForceTouchStart($event, 15)" ps-force-touch="CalcBox.onForceTouch($event, force, 15)">＋</div>
+        <div class="btn btn-default"              role="number"   value="1" ng-click="CalcBox.onClick($event, 12)" ps-force-touch="CalcBox.onForceTouch($event, force, 12)">１</div>
+        <div class="btn btn-default"              role="number"   value="2" ng-click="CalcBox.onClick($event, 13)" ps-force-touch="CalcBox.onForceTouch($event, force, 13)">２</div>
+        <div class="btn btn-default"              role="number"   value="3" ng-click="CalcBox.onClick($event, 14)" ps-force-touch="CalcBox.onForceTouch($event, force, 14)">３</div>
+        <div class="btn btn-default btn-operator" role="operator" value="+" ng-click="CalcBox.onClick($event, 15)" ps-force-touch="CalcBox.onForceTouch($event, force, 15)">＋</div>
     </div>
     <div>
-        <div class="btn btn-default btn-x2"       role="number"   value="0" ps-force-touch-start="CalcBox.onForceTouchStart($event, 16)" ps-force-touch="CalcBox.onForceTouch($event, force, 16)">０</div>
-        <div class="btn btn-default"              role="point"              ps-force-touch-start="CalcBox.onForceTouchStart($event, 18)" ps-force-touch="CalcBox.onForceTouch($event, force, 18)">．</div>
-        <div class="btn btn-default btn-operator" role="execute"            ps-force-touch-start="CalcBox.onForceTouchStart($event, 19)" ps-force-touch="CalcBox.onForceTouch($event, force, 19)">＝</div>
+        <div class="btn btn-default btn-x2"       role="number"   value="0" ng-click="CalcBox.onClick($event, 16)" ps-force-touch="CalcBox.onForceTouch($event, force, 16)">０</div>
+        <div class="btn btn-default"              role="point"              ng-click="CalcBox.onClick($event, 18)" ps-force-touch="CalcBox.onForceTouch($event, force, 18)">．</div>
+        <div class="btn btn-default btn-operator" role="execute"            ng-click="CalcBox.onClick($event, 19)" ps-force-touch="CalcBox.onForceTouch($event, force, 19)">＝</div>
     </div>
 </div>

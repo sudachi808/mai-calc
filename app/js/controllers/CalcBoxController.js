@@ -1,7 +1,7 @@
 /**
  * 電卓箱コントローラ
  */
-angular.module('app', ['service', 'psForceTouchEvents'])
+angular.module('app', ['service', 'ngTouch', 'psForceTouchEvents'])
 .controller('CalcBoxController', ['$element', 'CalcService', function($element, CalcService) {
 
     var self = this;
