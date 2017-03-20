@@ -25,4 +25,8 @@ gulp.task('clean', function() {
     ]);
 });
 
+gulp.task('copy:docs', function(){
+    gulp.src('app/**/*').pipe(gulp.dest('docs'));
+});
+
 gulp.task('default', ['less', 'copy']);
