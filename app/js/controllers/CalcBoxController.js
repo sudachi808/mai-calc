@@ -68,7 +68,18 @@ angular.module('app', ['service', 'ngTouch', 'psForceTouchEvents'])
      * @return {void}
      */
     self.toggleOpen = function() {
+        var grid_upper = angular.element(document.getElementById('grid-upper'));
+        var grid_lower = angular.element(document.getElementById('grid-lower'));
         $element.toggleClass('calc-box-open');
+        if ($element.hasClass('calc-box-open')) {
+            grid_upper.removeClass('hidden');
+            grid_lower.removeClass('hidden');
+        } else {
+            setTimeout(function() {
+                grid_upper.addClass('hidden');
+                grid_lower.addClass('hidden');
+            }, 1000);
+        }
     };
 
     /**
