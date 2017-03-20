@@ -1,5 +1,25 @@
+
+@display-width-iphone5:   320px;
+@display-height-iphone5:  568px;
+
+@display-width-iphone6:   375px;
+@display-height-iphone6:  667px;
+
+// iPhoneのステータスバー＆アドレスバー＆メニューバーの高さ合計
+@ios-margin: 108px;
+
 html, body {
-    height: 100%;
+    overflow: hidden;
+
+    width:  100%;
+    height: @display-height-iphone6;
+
+    @media screen and (max-height: @display-height-iphone5){
+        height: @display-height-iphone5 - @ios-margin;
+    }
+    @media screen and (max-height: @display-height-iphone6){
+        height: @display-height-iphone6 - @ios-margin;
+    }
 }
 
 .container-fluid {

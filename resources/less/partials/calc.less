@@ -1,8 +1,8 @@
 /**
  * 電卓用スタイルシート
  */
-@calc-btn-width:  80px;
-@calc-btn-height: @calc-btn-width;
+@calc-btn-size: 80px;
+@calc-btn-size-iphone5: 70px;
 
 @calc-btn-operator-bg: #3868AA;
 @calc-btn-operator-fg: #FFFFFF;
@@ -12,6 +12,7 @@
 
 .calc {
     padding: 10px;
+
     .calc-monitor {
         font-size: 28pt;
         font-family: monospace;
@@ -25,12 +26,23 @@
     }
     .btn {
         font-size: 18pt;
-        width : @calc-btn-width;
-        height: @calc-btn-height;
-        line-height: @calc-btn-height;
+
+        width      : @calc-btn-size;
+        height     : @calc-btn-size;
+        line-height: @calc-btn-size;
         margin: 1px 0px;
+
+        @media screen and (max-width: @display-width-iphone5){
+            width      : @calc-btn-size-iphone5;
+            height     : @calc-btn-size-iphone5;
+            line-height: @calc-btn-size-iphone5;
+        }
+
         &.btn-x2 {
-            width: @calc-btn-width * 2 + 5;
+            width: @calc-btn-size * 2 + 5;
+            @media screen and (max-width: 320px){
+                width: @calc-btn-size-iphone5 * 2 + 5;
+            }
         }
         &.btn-operator {
             background-color: @calc-btn-operator-bg;

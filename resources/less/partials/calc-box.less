@@ -1,16 +1,19 @@
 /**
  * 電卓ボックス用スタイルシート
  */
- @calc-box-width:  375px;
- @calc-box-height: 667px;
-
 .calc-box {
     display: inline-block;
+        position: relative;
 
-    width : 100%;
+    width: @display-width-iphone6;
     height: 100%;
-    max-width : @calc-box-width;
-    max-height: @calc-box-height;
+
+    @media screen and (max-width: @display-width-iphone6){
+        width: @display-width-iphone6;
+    }
+    @media screen and (max-width: @display-width-iphone5){
+        width: @display-width-iphone5;
+    }
 
     border: 1px solid red;
 
@@ -22,8 +25,15 @@
 
         z-index: 1000;
 
-        width:  100%;
+        width: @display-width-iphone6;
         height: 100%;
+
+        @media screen and (max-width: @display-width-iphone6){
+            width: @display-width-iphone6;
+        }
+        @media screen and (max-width: @display-width-iphone5){
+            width: @display-width-iphone5;
+        }
 
         border: 1px solid red;
 
@@ -39,7 +49,7 @@
             position: absolute;
             width:  inherit;
             height: inherit;
-            padding-top: 20px;
+            padding-top: 0px;
             background-position: center;
             /* オブジェクトの裏面を見せない */
             -webkit-backface-visibility: hidden;
@@ -108,5 +118,16 @@
         }
         &.calc-box-left  { left : 0px; transform-origin: left;  transform: rotateY( 90deg); }
         &.calc-box-right { right: 0px; transform-origin: right; transform: rotateY(-90deg); }
+    }
+
+    .btn-open, .btn-close {
+        font-size: 18pt;
+        width      : 160px;
+        height     :  60px;
+        line-height:  60px;
+        margin-top: 20px;
+        @media screen and (max-width: @display-width-iphone5) {
+            width      : 140px;
+        }
     }
 }
