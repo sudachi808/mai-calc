@@ -14,6 +14,7 @@ gulp.task('copy', function() {
     gulp.src('node_modules/pressure/dist/pressure.*').pipe(gulp.dest('app/js/vendors/pressure/'));
     gulp.src('node_modules/angular-pressure/angular.pressure.*').pipe(gulp.dest('app/js/vendors/angular-pressure/'));
     gulp.src('node_modules/angular-touch/angular-touch.*').pipe(gulp.dest('app/js/vendors/angular-touch/'));
+    gulp.src('node_modules/decimal.js/*.js').pipe(gulp.dest('app/js/vendors/decimal.js/'));
 })
 
 gulp.task('default', ['less', 'copy']);

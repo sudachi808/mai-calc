@@ -27,6 +27,7 @@ angular.module('app', ['service', 'ngTouch', 'psForceTouchEvents'])
         self.value_1 = null;
         self.value_2 = null;
         self.operator = null;
+        self.percent = false;
         self.answer = 0;
         self.monitor = {
             value: 0,
@@ -109,6 +110,9 @@ angular.module('app', ['service', 'ngTouch', 'psForceTouchEvents'])
             case 'invert':
                 self._onInvert();
                 break;
+            case 'percent':
+                self._onPercent();
+                break;
             case 'execute':
                 self._onExecute();
                 break;
@@ -157,6 +161,13 @@ angular.module('app', ['service', 'ngTouch', 'psForceTouchEvents'])
             return buffer;
         };
 
+        //
+        // パーセント計算実行直後に数字が選択された場合、すべての計算を破棄する。
+        //
+        if (self.percent) {
+            self._init();
+        }
+
         if (self.operator === null) {
             self.monitor.value = self.value_1 = setValue(self.value_1, value);
         } else {
@@ -177,6 +188,12 @@ angular.module('app', ['service', 'ngTouch', 'psForceTouchEvents'])
      * @return {void}
      */
     self._onOperator = function(value, text) {
+
+        //
+        // パーセント計算は（してもしなくても）完了とする。
+        //
+        self.percent = false;
+
         if (self.value_2 !== null) {
             //
             // すでに value_2 が入力されている状態で、演算子が選択された場合、
@@ -202,6 +219,7 @@ angular.module('app', ['service', 'ngTouch', 'psForceTouchEvents'])
      * @return {void}
      */
     self._onInvert = function() {
+
         if (self.operator === null) {
             if (self.value_1 === null) {
                 return;
@@ -212,6 +230,31 @@ angular.module('app', ['service', 'ngTouch', 'psForceTouchEvents'])
                 return;
             }
             self.monitor.value = self.value_2 = '-' + self.value_2;
+        }
+    };
+
+    /**
+     * パーセンテージ
+     * @return {void}
+     */
+    self._onPercent = function() {
+
+        var getPercent = function(value) {
+            var a = new Decimal(value);
+            var b = new Decimal(0.01);
+            return a.times(b).toNumber();
+        };
+
+        if (self.operator === null) {
+            if (self.value_1 !== null) {
+                self.monitor.value = self.value_1 = getPercent(self.value_1);
+                self.percent = true;
+            }
+        } else {
+            if (self.value_2 !== null) {
+                self.monitor.value = self.value_2 = getPercent(self.value_2);
+                self.percent = true;
+            }
         }
     };
 
