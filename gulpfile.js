@@ -2,6 +2,7 @@
 
 var gulp = require('gulp');
 var less = require('gulp-less');
+var del = require('del');
 
 gulp.task('less', function() {
     return gulp.src('resources/less/*.less')
@@ -16,5 +17,12 @@ gulp.task('copy', function() {
     gulp.src('node_modules/angular-touch/angular-touch.*').pipe(gulp.dest('app/js/vendors/angular-touch/'));
     gulp.src('node_modules/decimal.js/*.js').pipe(gulp.dest('app/js/vendors/decimal.js/'));
 })
+
+gulp.task('clean', function() {
+    del([
+        'app/css/*.css',
+        'app/js/vendors/**/*'
+    ]);
+});
 
 gulp.task('default', ['less', 'copy']);
