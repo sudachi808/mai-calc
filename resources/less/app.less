@@ -14,11 +14,17 @@ html, body {
     width:  100%;
     height: @display-height-iphone6;
 
-    @media screen and (max-height: @display-height-iphone5){
+    @media screen and (min-device-width: @display-width-iphone5) and (max-device-width: @display-width-iphone5) {
         height: @display-height-iphone5 - @ios-margin;
+        .calc-box {
+            .btn-open, .btn-close { display: none }
+        }
     }
-    @media screen and (max-height: @display-height-iphone6){
+    @media screen and (min-device-width: @display-width-iphone6) and (max-device-width: @display-width-iphone6) {
         height: @display-height-iphone6 - @ios-margin;
+        .calc-box {
+            .btn-open, .btn-close { display: none }
+        }
     }
 }
 
