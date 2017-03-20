@@ -297,6 +297,22 @@ angular.module('app', ['service', 'ngTouch', 'psForceTouchEvents'])
     };
 
     /**
+     * 右 -> 左 へスワイプ
+     * @return {void}
+     */
+    self.onSwipeLeft = function() {
+        self.toggleOpen();
+    };
+
+    /**
+     * 左 -> 右 へスワイプ
+     * @return {void}
+     */
+    self.onSwipeRight = function() {
+        self.toggleOpen();
+    };
+
+    /**
      * コンストラクタ
      */
     (function(){
