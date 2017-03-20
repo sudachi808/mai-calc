@@ -1,0 +1,357 @@
+html,
+body {
+  width: 100%;
+  height: 667px;
+}
+@media screen and (min-device-width: 320px) and (max-device-width: 320px) {
+  html,
+  body {
+    height: 460px;
+  }
+  html .calc-box .btn-open,
+  body .calc-box .btn-open,
+  html .calc-box .btn-close,
+  body .calc-box .btn-close {
+    display: none;
+  }
+}
+@media screen and (min-device-width: 375px) and (max-device-width: 375px) {
+  html,
+  body {
+    height: 559px;
+  }
+  html .calc-box .btn-open,
+  body .calc-box .btn-open,
+  html .calc-box .btn-close,
+  body .calc-box .btn-close {
+    display: none;
+  }
+}
+.container-fluid {
+  padding: 0px;
+  height: 100%;
+}
+/**
+ * 電卓ボックス用スタイルシート
+ */
+.calc-box {
+  display: inline-block;
+  position: relative;
+  width: 375px;
+  height: 100%;
+  border: 1px solid silver;
+  /* 視点距離 */
+  perspective: 2000px;
+  /*  箱を開ける */
+  /**
+     * 底面
+     */
+}
+@media screen and (max-width: 375px) {
+  .calc-box {
+    width: 375px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .calc-box {
+    width: 320px;
+  }
+}
+.calc-box .calc-box-cover {
+  position: relative;
+  z-index: 1000;
+  width: 375px;
+  height: 100%;
+  border: 1px solid silver;
+  /* オブジェクトを立体的に変形 */
+  transform-style: preserve-3d;
+  /* オブジェクト変形軸の位置 */
+  transform-origin: left;
+  /* 変形に要する時間 */
+  transition: transform 1s;
+}
+@media screen and (max-width: 375px) {
+  .calc-box .calc-box-cover {
+    width: 375px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .calc-box .calc-box-cover {
+    width: 320px;
+  }
+}
+@media screen and (min-device-width: 320px) and (max-device-width: 320px) {
+  .calc-box .calc-box-cover {
+    transform-origin: center;
+  }
+}
+@media screen and (min-device-width: 375px) and (max-device-width: 375px) {
+  .calc-box .calc-box-cover {
+    transform-origin: center;
+  }
+}
+.calc-box .calc-box-cover .calc-box-cover-front,
+.calc-box .calc-box-cover .calc-box-cover-back {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  padding-top: 0px;
+  background-position: center;
+  /* オブジェクトの裏面を見せない */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.calc-box .calc-box-cover .calc-box-cover-front {
+  background-image: url('../img/cover-front.png');
+}
+.calc-box .calc-box-cover .calc-box-cover-back {
+  background-image: url('../img/cover-back.jpg');
+  /* 裏面は初期状態でひっくり返しておく */
+  transform: rotateY(180deg);
+}
+.calc-box.calc-box-open .calc-box-cover {
+  transform: rotateY(-180deg);
+}
+.calc-box .calc-box-bottom {
+  background-image: url('../img/cover-back.jpg');
+  position: absolute;
+  z-index: 100;
+  perspective: 2000px;
+  transform: translateZ(-80px);
+  border: 1px solid gray;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+}
+.calc-box .calc-box-side {
+  background-image: url('../img/cover-back.jpg');
+  position: absolute;
+  border: 1px solid gray;
+  transform-style: preserve-3d;
+}
+.calc-box .calc-box-side.calc-box-front,
+.calc-box .calc-box-side.calc-box-back {
+  width: 100%;
+  height: 80px;
+  transform-origin: top;
+  transform: rotateX(-90deg);
+}
+.calc-box .calc-box-side.calc-box-back {
+  top: 0px;
+}
+.calc-box .calc-box-side.calc-box-left,
+.calc-box .calc-box-side.calc-box-right {
+  top: 0px;
+  width: 80px;
+  height: 100%;
+}
+.calc-box .calc-box-side.calc-box-left {
+  left: 0px;
+  transform-origin: left;
+  transform: rotateY(90deg);
+}
+.calc-box .calc-box-side.calc-box-right {
+  right: 0px;
+  transform-origin: right;
+  transform: rotateY(-90deg);
+}
+.calc-box .btn-open,
+.calc-box .btn-close {
+  font-size: 18pt;
+  width: 160px;
+  height: 60px;
+  line-height: 60px;
+  margin-top: 20px;
+}
+@media screen and (max-width: 320px) {
+  .calc-box .btn-open,
+  .calc-box .btn-close {
+    width: 140px;
+  }
+}
+/**
+ * 電卓用スタイルシート
+ */
+.calc {
+  padding: 10px;
+}
+.calc .calc-monitor {
+  font-size: 28pt;
+  font-family: monospace;
+  text-align: right;
+  padding: 5px 10px;
+  background-color: #EFECE5;
+  border: 1px solid silver;
+}
+.calc .calc-monitor .label {
+  font-size: 12pt;
+}
+.calc .btn {
+  font-size: 18pt;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  margin: 1px 0px;
+}
+@media screen and (max-width: 320px) {
+  .calc .btn {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+  }
+}
+.calc .btn.btn-x2 {
+  width: 165px;
+}
+@media screen and (max-width: 320px) {
+  .calc .btn.btn-x2 {
+    width: 145px;
+  }
+}
+.calc .btn.btn-operator {
+  background-color: #3868AA;
+  color: #FFFFFF;
+}
+.calc .btn.btn-other {
+  background-color: #DDDDDD;
+  color: #000000;
+}
+/**
+ * シウマイ用スタイルシート
+ */
+.shaomai {
+  display: inline-block;
+  position: relative;
+  width: 78px;
+  height: 78px;
+  transform-style: preserve-3d;
+}
+@media screen and (max-width: 320px) {
+  .shaomai {
+    width: 68px;
+    height: 68px;
+  }
+}
+.shaomai .face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform: translateZ(154px);
+  background: #F8F4E6;
+  border: 1px solid silver;
+}
+@media screen and (max-width: 320px) {
+  .shaomai .face {
+    transform: translateZ(134px);
+  }
+}
+.shaomai .face.face-top {
+  transform: rotateX(0deg) translateZ(39px);
+}
+.shaomai .face.face-bottom {
+  transform: rotateX(180deg) translateZ(39px);
+}
+.shaomai .face.face-front {
+  transform: rotateX(-90deg) translateZ(39px);
+}
+.shaomai .face.face-back {
+  transform: rotateX(90deg) translateZ(39px);
+}
+.shaomai .face.face-right {
+  transform: rotateY(90deg) translateZ(39px);
+}
+.shaomai .face.face-left {
+  transform: rotateY(-90deg) translateZ(39px);
+}
+@media screen and (max-width: 320px) {
+  .shaomai .face.face-top {
+    transform: rotateX(0deg) translateZ(34px);
+  }
+  .shaomai .face.face-bottom {
+    transform: rotateX(180deg) translateZ(34px);
+  }
+  .shaomai .face.face-front {
+    transform: rotateX(-90deg) translateZ(34px);
+  }
+  .shaomai .face.face-back {
+    transform: rotateX(90deg) translateZ(34px);
+  }
+  .shaomai .face.face-right {
+    transform: rotateY(90deg) translateZ(34px);
+  }
+  .shaomai .face.face-left {
+    transform: rotateY(-90deg) translateZ(34px);
+  }
+}
+.shaomai .green {
+  display: inline-block;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 29px;
+  left: 29px;
+  transform-style: preserve-3d;
+  transform: translateZ(38px);
+}
+@media screen and (max-width: 320px) {
+  .shaomai .green {
+    top: 24px;
+    left: 24px;
+  }
+}
+.shaomai .green .green-face {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #339933;
+  border: 1px solid #000000;
+}
+.shaomai .green .green-face.green-face-top {
+  transform: rotateX(0deg) translateZ(10px);
+}
+.shaomai .green .green-face.green-face-bottom {
+  transform: rotateX(180deg) translateZ(10px);
+}
+.shaomai .green .green-face.green-face-front {
+  transform: rotateX(-90deg) translateZ(10px);
+}
+.shaomai .green .green-face.green-face-back {
+  transform: rotateX(90deg) translateZ(10px);
+}
+.shaomai .green .green-face.green-face-left {
+  transform: rotateY(90deg) translateZ(10px);
+}
+.shaomai .green .green-face.green-face-right {
+  transform: rotateY(-90deg) translateZ(10px);
+}
+/**
+ * シウマイ貼り付けグリッド用スタイルシート
+ */
+.grid {
+  width: 100%;
+  margin-top: 100px;
+}
+.grid .grid-row {
+  padding: 0px;
+}
+.grid .grid-row > div[ng-include] {
+  display: inline-block;
+}
+.grid .shaomai {
+  transform: translateZ(-50px);
+  margin: 0px 2px;
+}
+.grid#grid-lower .shaomai .face-front,
+.grid#grid-lower .shaomai .face-back,
+.grid#grid-lower .shaomai .face-left,
+.grid#grid-lower .shaomai .face-right,
+.grid#grid-lower .shaomai .face-bottom {
+  display: none;
+}
+.grid#grid-lower .shaomai .green-face-front,
+.grid#grid-lower .shaomai .green-face-back,
+.grid#grid-lower .shaomai .green-face-left,
+.grid#grid-lower .shaomai .green-face-right,
+.grid#grid-lower .shaomai .green-face-bottom {
+  display: none;
+}

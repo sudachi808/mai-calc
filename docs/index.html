@@ -1,1 +1,29 @@
-<h1>Hello world!</h1>
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>MaiCalc</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/app.css">
+
+    <script src="js/vendors/angular/angular.js"></script>
+    <script src="js/vendors/angular-touch/angular-touch.js"></script>
+
+    <script src="js/vendors/pressure/pressure.js"></script>
+    <script src="js/vendors/angular-pressure/angular.pressure.js"></script>
+    <script src="js/vendors/decimal.js/decimal.min.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/controllers/CalcBoxController.js"></script>
+    <script src="js/services/CalcService.js"></script>
+</head>
+<body>
+
+<div class="container-fluid text-center" ng-include="'views/pages/main.html'"></div>
+
+</body>
+</html>
